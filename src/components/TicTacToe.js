@@ -13,7 +13,7 @@ const TicTacToe = () => {
     [0,4,8],
     [2,5,6],
   ];
-
+  const [squares, setSquares] = useState(Array(9).fill(null));
   const winner = null;
 
   const getStatus = () => {
@@ -26,11 +26,20 @@ const TicTacToe = () => {
     }
   };
 
+  const handleClick = (i) => {
+
+  }
+  const Square = ({value,onClick}) => (
+    <button className="square" onClick={onClick}>
+      {value}
+    </button>
+  );
+
   const renderSquare = (i) => (
-    <div>
-      <button className="square">
-      </button>
-    </div>
+    <Square
+      value={squares[i]}
+      onClick={()=>handleClick(i)}
+    />
   );
 
   return(
