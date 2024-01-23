@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Square from './Square';
 import './TicTacToe.css';
 
 const TicTacToe = () => {
@@ -16,23 +15,30 @@ const TicTacToe = () => {
     }
   };
 
+  const renderSquare = (i) => (
+    <div>
+      <button className="square">
+      </button>
+    </div>
+  );
+
   return(
     <div>
       <div className="status">{getStatus()}</div>
       <div className="board-row">
-        <Square />
-        <Square />
-        <Square />
+        {renderSquare(0)}
+        {renderSquare(1)}
+        {renderSquare(2)}
       </div>
       <div className="board-row">
-        <Square />
-        <Square />
-        <Square />
+        {renderSquare(3)}
+        {renderSquare(4)}
+        {renderSquare(5)}
       </div>
       <div className="board-row">
-        <Square />
-        <Square />
-        <Square />
+        {renderSquare(6)}
+        {renderSquare(7)}
+        {renderSquare(8)}
       </div>
     </div>
   );
