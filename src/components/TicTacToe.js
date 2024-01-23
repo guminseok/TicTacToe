@@ -46,6 +46,10 @@ const TicTacToe = () => {
     </button>
   );
 
+  const reset = () => {
+    setSquares(Array(9).fill(null));
+  }
+
   const renderSquare = (i) => (
     <Square
       value={squares[i]}
@@ -70,6 +74,7 @@ const TicTacToe = () => {
         {renderSquare(6)}
         {renderSquare(7)}
         {renderSquare(8)}
+        <button onClick={()=>reset()}>reset</button>
       </div>
     </div>
   );
