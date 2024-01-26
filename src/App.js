@@ -1,5 +1,6 @@
 import TicTacToe from "./components/TicTacToe";
 import TicTacToeTest from "./components/TicTacToeTest";
+import List from "./components/List";
 import TicTacToeDev from "./components/TicTacToeDev";
 import TpyeReducer from "./components/TpyeReducer.tsx";
 import TpyeContext from "./components/TpyeContext.tsx";
@@ -11,6 +12,7 @@ import './App.css';
 function App() {
   return (
     <div className="game">
+      <div className="margin-b"><List /></div>
       <div className="margin-b"><Gallery /></div>
       <div className="margin-b"><TpyeCallback /></div>
       <div className="margin-b"><TpyeMemo /></div>
