@@ -21,7 +21,7 @@ function stateReducer(state: State, action: CounterAction): State {
   }
 }
 
-export default function TpyeSc() {
+export default function TpyeReducer() {
   //initialState 初期値、stateReducerどういうふうにアップデートされるか表示
   const [state, dispatch] = useReducer(stateReducer, initialState);
 
