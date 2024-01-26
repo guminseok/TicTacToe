@@ -1,26 +1,36 @@
-import React, { createContext, useContext, useState } from 'react';
+import React ,{ createContext, useContext, useState, useMemo } from 'react';
 
-type Theme = "light" | "dark" | "system";
-const ThemeContext = createContext<Theme>("light");
+// This is a simpler example, but you can imagine a more complex object here
+type ComplexObject = {
+  kind: string
+};
 
-const useGetTheme = () => useContext(ThemeContext);
+// The context is created with `| null` in the type, to accurately reflect the default value.
+const Context = createContext<ComplexObject | null>(null);
+
+// The `| null` will be removed via the check in the Hook.
+const useGetComplexObject = () => {
+  const object = useContext(Context);
+  if (!object) { throw new Error("useGetComplexObject must be used within a Provider") }
+  return object;
+}
 
 export default function TpyeContext() {
-  const [theme, setTheme] = useState<Theme>('dark');
+  const object = useMemo(() => ({ kind: "complex" }), []);
 
   return (
-    <ThemeContext.Provider value={theme}>
-      <MyApp />
-    </ThemeContext.Provider>
+    <Context.Provider value={object}>
+      <MyComponent />
+    </Context.Provider>
   )
 }
 
-function MyApp() {
-  const theme = useGetTheme();
+function MyComponent() {
+  const object = useGetComplexObject();
 
   return (
     <div>
-      <p>Current theme: {theme}</p>
+      <p>Current object: {object.kind}</p>
     </div>
   )
 }
